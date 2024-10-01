@@ -13,6 +13,8 @@ app.use(cookieParser());
 
 const port = 3000;
 
+// EXPRESS ROUTERS
+
 app.use("/", authRouter);
 app.use("/", profileRouter);
 app.use("/", connectionRequestRouter);

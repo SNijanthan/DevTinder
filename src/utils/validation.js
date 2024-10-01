@@ -13,4 +13,37 @@ const signUpValidation = (req) => {
   }
 };
 
-module.exports = { signUpValidation };
+const validateEditProfileData = (req) => {
+  const allowedEditFields = [
+    "firstName",
+    "lastName",
+    "profilePic",
+    "age",
+    "gender",
+    "about",
+    "skills",
+  ];
+
+  const isEditAllowed = Object.keys(req.body).every((key) => {
+    return allowedEditFields.includes(key);
+  });
+
+  return isEditAllowed;
+};
+
+const passwordValidation = (req) => {
+  const { password } = req.body;
+  if (!password || password.length < 5) {
+    throw new Error(
+      "Password field cannot be empty and should more than 5 characters"
+    );
+  } else if (!validator.isStrongPassword(password)) {
+    throw new Error("Password looks weak, Try other password");
+  }
+};
+
+module.exports = {
+  signUpValidation,
+  validateEditProfileData,
+  passwordValidation,
+};

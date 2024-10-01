@@ -12,7 +12,7 @@ const userAuth = async (req, res, next) => {
 
     // VALIDATING TOKEN
 
-    const isTokenValid = await jwt.verify(token, "thisISsPrivateKey");
+    const isTokenValid = await jwt.verify(token, "thisISsPrivateKey"); // { _id: '66fab6c963edcb41e2ab14ca', iat: 1727716794, exp: 1728321594 }
 
     const { _id } = isTokenValid;
 
