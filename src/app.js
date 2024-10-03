@@ -1,14 +1,15 @@
 const express = require("express");
 const cookieParser = require("cookie-parser");
-const User = require("./models/user");
 const { connectToDB } = require("./config/database");
 const { authRouter } = require("./routes/auth");
 const { profileRouter } = require("./routes/profile");
 const { connectionRequestRouter } = require("./routes/connectionRequests");
 const { userRouter } = require("./routes/user");
+const cors = require("cors");
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
 
